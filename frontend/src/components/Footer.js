@@ -46,12 +46,12 @@ const Footer = () => {
 
             <a
               className="text-pink-600 hover:text-pink-600/75"
-              href="/https://cadena.dev/"
+              href="https://cadena.dev/"
               target="_blank"
               rel="noreferrer"
               aria-label="CadenaDev"
             >
-              <img src='https://cadena.dev/wp-content/uploads/2021/11/cad-favicon.png' width={28}/>
+              <img src='https://cadena.dev/wp-content/uploads/2021/11/cad-favicon.png' width={28} alt='cadena logo'/>
             </a>
           </div>
           <p className="mx-auto max-w-lg text-xs text-gray-500">

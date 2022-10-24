@@ -11,19 +11,36 @@ const Header = ({setGlobalAccount, setNotify}) => {
   const [nftSupply, setNftSupply] = useState(0);
   const [nftMintPrice, setNftMintPrice] = useState(0);
 
-  window.ethereum.on("chainChanged", () => {
-    checkIfWalletIsConnected();
-  });
-
-  window.ethereum.on("accountsChanged", () => {
-    checkIfWalletIsConnected();
-  });
+  // if (!window.ethereum) {
+  //   console.log("Make sure you have metamask!");
+  //   // setNotify(previousState => {
+  //   //   return {
+  //   //     ...previousState, 
+  //   //     type: "warning",
+  //   //     msg: "Make sure you have metamask!" 
+  //   //   }
+  //   // });
+  // } else {
+  //   window.ethereum.on("chainChanged", () => {
+  //     checkIfWalletIsConnected();
+  //   });
+  
+  //   window.ethereum.on("accountsChanged", () => {
+  //     checkIfWalletIsConnected();
+  //   });
+  // }
 
   const checkIfWalletIsConnected = async () => {
     const { ethereum } = window;
 
     if (!ethereum) {
-      console.log("Make sure you have metamask!");
+      setNotify(previousState => {
+        return {
+          ...previousState, 
+          type: "warning",
+          msg: "Make sure you have metamask!" 
+        }
+      });
       return;
     }
 
@@ -103,7 +120,7 @@ const Header = ({setGlobalAccount, setNotify}) => {
 
   useEffect(() => {
     checkIfWalletIsConnected();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
@@ -133,14 +150,13 @@ const Header = ({setGlobalAccount, setNotify}) => {
         </div>
       </header>
       <div className='text-center'>
-        <a
+        <div
           className="inline-block rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] mb-2 focus:outline-none focus:ring active:text-opacity-75"
-          href="#"
         >
           <span className="block rounded-full bg-white px-8 py-1 text-sm font-medium">
             Live on Mumbai network
           </span>
-        </a> <br/>
+        </div> <br/>
         Contract Address: <span className='text-indigo-700'>{contractAddress}</span> <br/>
         NFT Mint Price: <span className='text-indigo-700'>{nftMintPrice}</span> ETH <br/>
         NFT Supply: <span className='text-indigo-700'>{nftSupply}</span>

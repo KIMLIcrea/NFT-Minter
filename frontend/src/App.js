@@ -12,7 +12,7 @@ function App() {
   
   return (
     <>
-      <Notify type={notify.type} msg={notify.msg} setNotify={setNotify}/>
+      <Notify notify={notify} setNotify={setNotify}/>
       <div className="container mx-auto px-4">
         <Header setGlobalAccount={setGlobalAccount} setNotify={setNotify}/>
         <div className="mt-8 grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { ethers } from "ethers";
 import makeNFT from "../libs/contracts/MakeNFT.json";
 
@@ -51,7 +51,7 @@ const NFTItem = ({currentAddress, item, setNotify}) => {
   }
 
   return (
-    <a href="#" className="relative block shadow-md">
+    <div className="relative block shadow-md">
       <img
         src={require(`../libs/images/${item.edition}.png`)}
         alt={item.name}
@@ -70,7 +70,7 @@ const NFTItem = ({currentAddress, item, setNotify}) => {
           </button>
         </div>
       </div>
-    </a>
+    </div>
   );
 }
 

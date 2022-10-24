@@ -1,4 +1,4 @@
-const Notify = ({type, msg, setNotify}) => {
+const Notify = ({notify, setNotify}) => {
   const close = () => {
     setNotify(previousState => {
       return { ...previousState, msg: "" }
@@ -7,10 +7,10 @@ const Notify = ({type, msg, setNotify}) => {
 
   return (
     <>
-      {msg ? 
+      {notify.msg !== '' ? 
       <div className="fixed inset-x-0 top-0 z-10">
-        <div className={`relative bg-${ type === 'success' ? 'green' : (type === 'error' ? 'indigo' : 'orange') }-600 px-4 py-3 pr-14 text-white`}>
-          <p className="text-left text-sm font-medium sm:text-center" dangerouslySetInnerHTML={{__html: msg}}></p>
+        <div className={`relative ${ notify.type === 'success' ? 'bg-green-600' : (notify.type === 'error' ? 'bg-indigo-600' : 'bg-orange-600') } px-4 py-3 pr-14 text-white`}>
+          <p className="text-left text-sm font-medium sm:text-center" dangerouslySetInnerHTML={{__html: notify.msg}}></p>
           <button
             aria-label="Close"
             className="absolute top-1/2 right-4 -translate-y-1/2 rounded-lg bg-black/10 p-1 transition hover:bg-black/20"
